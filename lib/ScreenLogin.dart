@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:learn/BMI1.dart';
 class Login extends StatefulWidget {
   const Login({super.key});
 
@@ -80,7 +81,12 @@ class _LoginState extends State<Login> {
                 ),
 
                 SizedBox(height:70 ,),
-                MaterialButton( color:Color(0xFF1976D2), onPressed: (){},child:Container(
+                MaterialButton( color:Color(0xFF1976D2), onPressed: (){
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (_){
+                    return HomeScreen1();
+
+                  }));
+                },child:Container(
                   width: 300,
                   height: 45,
                   child: Center(child: Text("LOGIN ",style: TextStyle(fontSize: 25, color: Colors.white),)),

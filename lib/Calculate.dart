@@ -16,15 +16,6 @@ int res=0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Calculate ",
-          style: TextStyle(
-            fontSize: 40,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

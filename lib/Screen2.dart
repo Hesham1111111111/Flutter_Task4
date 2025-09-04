@@ -121,7 +121,7 @@ class Screen2 extends StatelessWidget {
             padding: EdgeInsets.only(bottom: 40),
             child: MaterialButton(
               onPressed: () {
-                Navigator.pushReplacement(
+                Navigator.push(
                   context, MaterialPageRoute(builder: (_) {
                   return HomeScreen();
 

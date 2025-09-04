@@ -39,43 +39,14 @@ class _HomeScreenState extends State<HomeScreen> {
   bool change = true;
 
 
-    List<Widget> Body = [
-       HomeScreen1(),
-      Calculate(),
-      Login(),
 
-  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.black87,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.deepPurple,
-        currentIndex: currentIndex,
-        onTap: (int x) {
-          setState(() {
-            currentIndex = x;
-          });
-        },
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: "BMI ",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.calculate),
-            label: "Calculate  ",
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: "Profile  ",
-          ),
-        ],
-      ),
       backgroundColor: Color(0xFF1976D2),
-      body:Body[currentIndex],
+      body:Login(),
+
 
     );
   }
