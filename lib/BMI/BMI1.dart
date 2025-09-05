@@ -1,11 +1,7 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:learn/BMI/BMI2.dart';
+import 'package:learn/BMI/BMI_screen2.dart';
 import 'package:learn/Calculate.dart';
-
-
-
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -15,17 +11,16 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final username = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: HomeScreen1(),
-    );
+    return MaterialApp(home: HomeScreen1(username: username.text));
   }
 }
 
 class HomeScreen1 extends StatefulWidget {
-  const HomeScreen1({super.key});
+  const HomeScreen1({super.key, required String username});
 
   @override
   State<HomeScreen1> createState() => _HomeScreenState();
@@ -37,16 +32,8 @@ class _HomeScreenState extends State<HomeScreen1> {
   int age = 20;
   int Weight = 70;
   int currentIndex = 0;
-  List<String > title=[
-    "BMI Calculate ",
-    "Calculate",
-  ];
-  List<Widget> Body = [
-    HomeSceen2(),
-    Calculate(),
-
-
-  ];
+  List<String> title = ["BMI Calculate ", "Calculate"];
+  List<Widget> Body = [HomeSceen2(), Calculate()];
 
   @override
   Widget build(BuildContext context) {
@@ -62,15 +49,11 @@ class _HomeScreenState extends State<HomeScreen1> {
           });
         },
         items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: "Profile  ",
-          ),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile  "),
           BottomNavigationBarItem(
             icon: Icon(Icons.calculate),
             label: "Calculate  ",
           ),
-
         ],
       ),
       appBar: AppBar(
@@ -88,7 +71,6 @@ class _HomeScreenState extends State<HomeScreen1> {
       ),
       backgroundColor: Color(0xFF0A0E21),
       body: Body[currentIndex],
-
     );
   }
 }

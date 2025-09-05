@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import'ScreenLogin.dart';
-import'Calculate.dart';
-import'BMI1.dart';
-
+import 'ScreenLogin.dart';
 
 main() {
   runApp(MyApp());
@@ -18,9 +15,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: HomeScreen(),
-    );
+    return MaterialApp(home: HomeScreen());
   }
 }
 
@@ -38,16 +33,8 @@ class _HomeScreenState extends State<HomeScreen> {
   int currentIndex = 0;
   bool change = true;
 
-
-
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Color(0xFF1976D2),
-      body:Login(),
-
-
-    );
+    return Scaffold(backgroundColor: Color(0xFF1976D2), body: Login());
   }
 }

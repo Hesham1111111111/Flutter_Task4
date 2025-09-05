@@ -8,10 +8,9 @@ class Calculate extends StatefulWidget {
 }
 
 class _CalculateState extends State<Calculate> {
-  var num1=TextEditingController();
-  var num2=TextEditingController();
-int res=0;
-
+  var num1 = TextEditingController();
+  var num2 = TextEditingController();
+  int res = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -37,14 +36,10 @@ int res=0;
                   TextFormField(
                     controller: num1,
                     decoration: InputDecoration(
-
                       border: OutlineInputBorder(),
                       hint: Text(
                         "Num 1",
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.white,
-                        ),
+                        style: TextStyle(fontSize: 20, color: Colors.white),
                       ),
                     ),
                   ),
@@ -55,10 +50,7 @@ int res=0;
                       border: OutlineInputBorder(),
                       hint: Text(
                         "Num 2",
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.white,
-                        ),
+                        style: TextStyle(fontSize: 20, color: Colors.white),
                       ),
                     ),
                   ),
@@ -70,10 +62,7 @@ int res=0;
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(color: Color(0xFF2E7D32), width: 50, height: 20),
-              Text(
-                "Result  = ${res} ",
-                style: TextStyle(fontSize: 20),
-              ),
+              Text("Result  = ${res} ", style: TextStyle(fontSize: 20)),
               Container(color: Color(0xFF2E7D32), width: 50, height: 20),
             ],
           ),
@@ -93,15 +82,11 @@ int res=0;
                 MaterialButton(
                   onPressed: () {
                     setState(() {
-                      res = int.parse(num1.text) +int.parse(num2.text);
+                      res = int.parse(num1.text) + int.parse(num2.text);
                     });
-
                   },
                   color: Colors.grey,
-                  child: Text(
-                    " + ",
-                    style: TextStyle(fontSize: 20),
-                  ),
+                  child: Text(" + ", style: TextStyle(fontSize: 20)),
                 ),
                 SizedBox(width: 20),
                 MaterialButton(
@@ -109,14 +94,9 @@ int res=0;
                     setState(() {
                       res = int.parse(num1.text) - int.parse(num2.text);
                     });
-
-
                   },
                   color: Colors.grey,
-                  child: Text(
-                    " - ",
-                    style: TextStyle(fontSize: 20),
-                  ),
+                  child: Text(" - ", style: TextStyle(fontSize: 20)),
                 ),
                 SizedBox(width: 20),
                 MaterialButton(
@@ -124,29 +104,19 @@ int res=0;
                     setState(() {
                       res = int.parse(num1.text) * int.parse(num2.text);
                     });
-
-
                   },
                   color: Colors.grey,
-                  child: Text(
-                    " * ",
-                    style: TextStyle(fontSize: 20),
-                  ),
+                  child: Text(" * ", style: TextStyle(fontSize: 20)),
                 ),
                 SizedBox(width: 20),
                 MaterialButton(
                   onPressed: () {
                     setState(() {
-                      double res= int.parse(num1.text) /  int.parse(num2.text);
+                      double res = int.parse(num1.text) / int.parse(num2.text);
                     });
-
-
                   },
                   color: Colors.grey,
-                  child: Text(
-                    " / ",
-                    style: TextStyle(fontSize: 20),
-                  ),
+                  child: Text(" / ", style: TextStyle(fontSize: 20)),
                 ),
               ],
             ),
@@ -156,5 +126,3 @@ int res=0;
     );
   }
 }
-
-

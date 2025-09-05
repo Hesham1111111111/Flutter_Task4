@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:learn/Container1.dart';
-import 'package:learn/Container2.dart';
-import 'package:learn/Screen2.dart';
+import 'package:learn/BMI/Container1.dart';
+import 'package:learn/BMI/Container2.dart';
+import 'package:learn/BMI/Screen2.dart';
+import 'package:learn/ScreenLogin.dart';
+
 class HomeSceen2 extends StatefulWidget {
-   HomeSceen2({super.key});
+  HomeSceen2({super.key});
 
   @override
   State<HomeSceen2> createState() => _HomeSceen2State();
@@ -119,7 +121,6 @@ class _HomeSceen2State extends State<HomeSceen2> {
           ),
         ),
         Expanded(
-
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -127,12 +128,18 @@ class _HomeSceen2State extends State<HomeSceen2> {
                 padding: const EdgeInsets.only(bottom: 40),
                 child: MaterialButton(
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute(builder: (_) {
-                      return Screen2(
-                        height: value.toInt(),
-                        weight: Weight,
-                      );
-                    }));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) {
+                          return Screen2(
+                            height: value.toInt(),
+                            weight: Weight,
+                            username: username,
+                          );
+                        },
+                      ),
+                    );
                   },
                   child: Container(
                     height: 70,
@@ -140,10 +147,7 @@ class _HomeSceen2State extends State<HomeSceen2> {
                     child: Center(
                       child: Text(
                         "Calculate ",
-                        style: TextStyle(
-                          fontSize: 30,
-                          color: Colors.white,
-                        ),
+                        style: TextStyle(fontSize: 30, color: Colors.white),
                       ),
                     ),
                   ),

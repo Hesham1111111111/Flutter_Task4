@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:learn/BMI1.dart';
+import 'package:learn/BMI/BMI1.dart';
+import 'package:learn/Calculate.dart';
+
 class Login extends StatefulWidget {
   const Login({super.key});
 
   @override
   State<Login> createState() => _LoginState();
 }
+
+var name = TextEditingController();
+bool obscureText = true;
+final username = TextEditingController();
+
+List<Widget> Body = [HomeScreen1(username: name.text), Calculate()];
 
 class _LoginState extends State<Login> {
   @override
@@ -32,17 +40,14 @@ class _LoginState extends State<Login> {
                   ),
                   Text(
                     "Enter a beautiful world ",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30,
-                    ),
+                    style: TextStyle(color: Colors.white, fontSize: 30),
                   ),
                 ],
               ),
             ),
           ),
         ),
-        SizedBox(height: 40,),
+        SizedBox(height: 40),
         Container(
           decoration: BoxDecoration(
             color: Colors.white,
@@ -56,65 +61,93 @@ class _LoginState extends State<Login> {
           child: Padding(
             padding: EdgeInsets.all(30.0),
             child: Column(
-
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                SizedBox(height: 100,),
+                SizedBox(height: 100),
                 TextFormField(
+                  controller: name,
                   decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: "Your Email ",
-                      prefixIcon: Icon(Icons.email)
-                  ),
-
-                ),
-                SizedBox(height:25 ,),
-                TextFormField(
-                  decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      hintText: "Password  ",
-                      prefixIcon: Icon(Icons.lock)
+                    filled: true,
+                    fillColor: Colors.grey[200],
+                    border: OutlineInputBorder(),
+                    hintText: "Your Email ",
+                    prefixIcon: Icon(Icons.email),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 260),
-                  child: Text("Forget Password " , style: TextStyle(color: Colors.blue, fontSize: 15),),
+                SizedBox(height: 25),
+                TextFormField(
+                  obscureText: obscureText,
+                  obscuringCharacter: '*',
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.grey[200],
+                    border: OutlineInputBorder(),
+                    hintText: "Password  ",
+                    prefixIcon: Icon(Icons.lock),
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          obscureText = !obscureText;
+                        });
+                      },
+                      icon: Icon(
+                        obscureText ? Icons.visibility : Icons.visibility_off,
+                      ),
+                    ),
+                  ),
                 ),
-
-                SizedBox(height:70 ,),
-                MaterialButton( color:Color(0xFF1976D2), onPressed: (){
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (_){
-                    return HomeScreen1();
-
-                  }));
-                },child:Container(
-                  width: 300,
-                  height: 45,
-                  child: Center(child: Text("LOGIN ",style: TextStyle(fontSize: 25, color: Colors.white),)),
-                )
+                TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    "Forget Password ",
+                    style: TextStyle(color: Colors.blue, fontSize: 20),
+                  ),
                 ),
-                SizedBox(height: 70,),
+                SizedBox(height: 70),
+                MaterialButton(
+                  color: Color(0xFF1976D2),
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) {
+                          return HomeScreen1(username: name.text);
+                        },
+                      ),
+                    );
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    height: 45,
+                    child: Center(
+                      child: Text(
+                        "LOGIN ",
+                        style: TextStyle(fontSize: 25, color: Colors.white),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 50),
                 Padding(
                   padding: const EdgeInsets.all(20.0),
                   child: Row(
                     children: [
-                      Text("Don't Have An Account ? ",style: TextStyle(fontSize: 20),),
-                      Text("Register Now ", style:TextStyle(color: Colors.blue, fontSize: 18),)
-
-
+                      Text(
+                        "Don't Have An Account ? ",
+                        style: TextStyle(fontSize: 20),
+                      ),
+                      Text(
+                        "Register Now ",
+                        style: TextStyle(color: Colors.blue, fontSize: 18),
+                      ),
                     ],
                   ),
-                )
+                ),
               ],
-
             ),
           ),
         ),
-
       ],
-    )
-
-    ;
+    );
   }
 }
-
-

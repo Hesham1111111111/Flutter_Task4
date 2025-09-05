@@ -1,16 +1,20 @@
-
 import 'package:flutter/material.dart';
-import 'package:learn/BMI1.dart';
+import 'package:learn/BMI/BMI1.dart';
+import 'package:learn/ScreenLogin.dart';
 import 'package:learn/main.dart';
-
-import 'BMI.dart';
-
+import 'resultbmi.dart';
 
 class Screen2 extends StatelessWidget {
   final int height;
   final int weight;
+  final username;
 
-  const Screen2({super.key, required this.height, required this.weight});
+  Screen2({
+    super.key,
+    required this.height,
+    required this.weight,
+    required this.username,
+  });
 
   double calcBMI() {
     double heightInMeters = height / 100;
@@ -19,25 +23,29 @@ class Screen2 extends StatelessWidget {
 
   BMIResult checkBMI() {
     calcBMI();
-    if ( calcBMI() < 18.5) {
+    if (calcBMI() < 18.5) {
       return BMIResult(
         anser: "Underweight",
-        advice: "You are below the healthy range. Try to eat nutritious meals and gain some weight",
+        advice:
+            "You are below the healthy range. Try to eat nutritious meals and gain some weight",
       );
-    } else if ( calcBMI() < 25) {
+    } else if (calcBMI() < 25) {
       return BMIResult(
         anser: "Normal",
-        advice: "Great job! Your BMI is in the healthy range. Keep up your balanced diet and exercise",
+        advice:
+            "Great job! Your BMI is in the healthy range. Keep up your balanced diet and exercise",
       );
-    } else if ( calcBMI() < 30) {
+    } else if (calcBMI() < 30) {
       return BMIResult(
         anser: "Overweight",
-        advice: "You are above the healthy range. Consider regular exercise and watch your diet",
+        advice:
+            "You are above the healthy range. Consider regular exercise and watch your diet",
       );
     } else {
       return BMIResult(
         anser: "Obese",
-        advice: "Your BMI is too high. It's important to follow a healthier lifestyle and consult a doctor if needed",
+        advice:
+            "Your BMI is too high. It's important to follow a healthier lifestyle and consult a doctor if needed",
       );
     }
   }
@@ -60,20 +68,16 @@ class Screen2 extends StatelessWidget {
           ),
         ),
         backgroundColor: const Color(0xFF1D1E33),
-        iconTheme: const IconThemeData(
-          size: 35,
-          color: Colors.white,
-        ),
+        iconTheme: const IconThemeData(size: 35, color: Colors.white),
       ),
       body: Column(
-
         children: [
           SizedBox(height: 10),
           Center(
             child: Text(
-              "Your Result",
+              "Welcome ${name.text}",
               style: TextStyle(
-                fontSize: 60,
+                fontSize: 30,
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
               ),
@@ -86,7 +90,7 @@ class Screen2 extends StatelessWidget {
               width: 430,
               height: 550,
               decoration: BoxDecoration(
-                color:  Color(0xFF1D1E33),
+                color: Color(0xFF1D1E33),
                 borderRadius: BorderRadius.circular(40),
               ),
               child: Column(
@@ -98,7 +102,7 @@ class Screen2 extends StatelessWidget {
                   SizedBox(height: 30),
                   Text(
                     calcBMI().toStringAsFixed(1),
-                    style:  TextStyle(
+                    style: TextStyle(
                       fontSize: 90,
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
@@ -109,7 +113,7 @@ class Screen2 extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 30),
                     child: Text(
                       result.advice,
-                      style:  TextStyle(fontSize: 30, color: Colors.white),
+                      style: TextStyle(fontSize: 30, color: Colors.white),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -122,16 +126,18 @@ class Screen2 extends StatelessWidget {
             child: MaterialButton(
               onPressed: () {
                 Navigator.push(
-                  context, MaterialPageRoute(builder: (_) {
-                  return HomeScreen();
-
-                } ),
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) {
+                      return HomeScreen1(username: name.text);
+                    },
+                  ),
                 );
               },
               child: Container(
                 height: 50,
                 color: Colors.red[800],
-                child:  Center(
+                child: Center(
                   child: Text(
                     "Re-Calculate",
                     style: TextStyle(fontSize: 30, color: Colors.white),
